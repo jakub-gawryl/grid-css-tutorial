@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>CSS Grid tutorial</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="description">
+    <a href="https://grid.layoutit.com/" target="_blank">Grid layout playground</a>
+  </div>
+
+  <div class="grid-example">
+    <code>
+      .grid-wrapper-a{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 3fr 1fr 2fr;
+      }
+    </code>
+    <div class="grid-wrapper grid-wrapper-a">
+      <div class="grid-item grid-item-1">Grid item A 1</div>
+      <div class="grid-item grid-item-2">Grid item A 2</div>
+      <div class="grid-item grid-item-3">Grid item A 3</div>
+      <div class="grid-item grid-item-4">Grid item A 4</div>
+      <div class="grid-item grid-item-5">Grid item A 5</div>
+      <div class="grid-item grid-item-6">Grid item A 6</div>
+    </div>
+  </div>
+
+  <div class="grid-example">
+    <code>
+      .grid-wrapper-b{
+        grid-template-columns: repeat(3, 250px);
+      }
+    </code>
+    <div class="grid-wrapper grid-wrapper-b">
+      <div class="grid-item grid-item-1">Grid item B 1</div>
+      <div class="grid-item grid-item-2">Grid item B 2</div>
+      <div class="grid-item grid-item-3">Grid item B 3</div>
+      <div class="grid-item grid-item-4">Grid item B 4</div>
+      <div class="grid-item grid-item-5">Grid item B 5</div>
+      <div class="grid-item grid-item-6">Grid item B 6</div>
+    </div>
+  </div>
+
+  <div class="grid-example">
+    <code>
+        .grid-wrapper-c{
+          grid-template-columns: 1fr 4fr;
+
+          /* grid-column-gap: 10px; */
+          /* grid-row-gap: 10px; */
+          /* above is qual to: */
+          grid-gap: 10px;
+        }
+      </code>
+    <div class="grid-wrapper grid-wrapper-c">
+      <div class="grid-item grid-item-1">Grid item C 1</div>
+      <div class="grid-item grid-item-2">Grid item C 2</div>
+      <div class="grid-item grid-item-3">Grid item C 3</div>
+      <div class="grid-item grid-item-4">Grid item C 4</div>
+      <div class="grid-item grid-item-5">Grid item C 5</div>
+      <div class="grid-item grid-item-6">Grid item C 6</div>
+    </div>
+  </div>
+
+  <div class="grid-example">
+    <code>
+        .grid-wrapper-d{
+          grid-template-columns: 1fr 5fr 2fr;
+          grid-template-rows: 80px repeat(2, 50px);
+          grid-gap: 10px 25px;
+          grid-template-areas:
+            "header header header"
+            "sidebar content sidebar2";
+        }
+  
+        .grid-wrapper-d .grid-item-1 {grid-area: header;}
+        .grid-wrapper-d .grid-item-2 {grid-area: sidebar;}
+        .grid-wrapper-d .grid-item-3 {grid-area: content;}
+        .grid-wrapper-d .grid-item-4 {grid-area: sidebar2;}
+      </code>
+    <div class="grid-wrapper grid-wrapper-d">
+      <div class="grid-item grid-item-1">Grid item D 1</div>
+      <div class="grid-item grid-item-2">Grid item D 2</div>
+      <div class="grid-item grid-item-3">Grid item D 3</div>
+      <div class="grid-item grid-item-4">Grid item D 4</div>
+      <div class="grid-item grid-item-5">Grid item D 5</div>
+      <div class="grid-item grid-item-6">Grid item D 6</div>
+    </div>
+  </div>
+
+  <div class="grid-example">
+    <code>
+      .grid-wrapper-e{
+        grid-template-columns: 450px 200px;
+        grid-auto-rows: minmax(150px, auto);
+        grid-gap: 20px;
+      }
+
+      .grid-wrapper-e .grid-item-1 {grid-column: 1 / 3;} /* or grid-column: 1 / -1; */
+      .grid-wrapper-e .grid-item-3 {
+        grid-row-start: 2;
+        grid-row-end: 5;
+      }
+      .grid-wrapper-e .grid-item-6 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+    </code>
+    <div class="grid-wrapper grid-wrapper-e">
+      <div class="grid-item grid-item-1">Grid item E 1</div>
+      <div class="grid-item grid-item-2">Grid item E 2</div>
+      <div class="grid-item grid-item-3">Grid item E 3</div>
+      <div class="grid-item grid-item-4">Grid item E 4</div>
+      <div class="grid-item grid-item-5">Grid item E 5</div>
+      <div class="grid-item grid-item-6">Grid item E 6</div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+  <script>
+    let css = '';
+    $(document).ready(() => {
+      $('code').each(function (index) {
+        css += $(this).html();
+      });
+
+      $(`<style>${css}</style>`).appendTo("head")
+    });
+  </script>
+</body>
+
+</html>
